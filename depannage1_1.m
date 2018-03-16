@@ -8,7 +8,7 @@ alpha=1
 wx= (partie 1)
 
 % Declaration des autres variables
-
+%allo 
 c=1
 theta=0
 Nx=100
