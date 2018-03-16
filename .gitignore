@@ -69,3 +69,6 @@ sccprj/
 # Octave session info
 
 octave-workspace
+
+#MATLAB#
+startup.m
