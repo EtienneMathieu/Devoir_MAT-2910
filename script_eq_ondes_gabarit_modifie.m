@@ -6,7 +6,7 @@ L = 1;
 T = 1;
 alpha = 1;
 coefferr = 0;
-wx=   ; %depend de la partie 1
+wx = ; %depend de la partie 1
 
 %% Declaration des autres variables
 
