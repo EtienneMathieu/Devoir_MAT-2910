@@ -1,4 +1,4 @@
-function [u,erreur] = resout_eq_onde_gabari(c,Nt,Nx,theta,f,u0,utilde)
+function [u,erreur] = resout_eq_onde_gabarit(c,Nt,Nx,theta,f,u0,utilde)
 
 %% Utilisation des variables global
 global coefferr;
@@ -13,7 +13,7 @@ erreur=[];
 deltax=L/(Nx-1);
 deltat=           ;
 
-xinter= : :       ;
+xinter= : :       ; 
 
 %% Creation des deux premiere colonne de u
 
@@ -22,8 +22,11 @@ u=zeros(Nx,Nt);
 u(:,1)=
 u(:,2)=utilde(xinter);
 
+U_0=u(:,1);
+U_1=u(:,2);
 %% Definition des matrices:
-coeff=c*(deltat)^2/(deltax)^2;
+coef=c*(deltat)^2/(deltax)^2;
+
 A=toeplitz([1+2*theta*coef,-theta*coef, zeros(1, Nx-2)]);
 Bzero =                  ;
 B1=                 ;
@@ -40,7 +43,7 @@ A(Nx,Nx)= ;
 
 for i=3:Nt
     %Ajustement du temps
-    
+   
     
     % construction second membre (b=B_0U^n+B_1U^(n-1))
     
@@ -63,13 +66,13 @@ end
 if coefferr==0
     erreur=[];
 elseif coefferr==1
+    global wx;
     %Creation de la fonction anonyme solution exacte
-    global wx
     uexacte=@(x,t)     ;
     
     %Dicretisation des intervalles 
-    xinter=      ;% doit etre un vecteur colonne
-    tinter=      ;%doit etre un vecteur ligne
+    xinter= ( : : )'       ; % doit etre un vecteur colonne
+    tinter= : :   ;%doit etre un vecteur ligne
     
     %Creation de la matrice matsolexacte (dim. Nx x Nt);
     

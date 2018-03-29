@@ -1,4 +1,4 @@
-function [u,erreur] = resout_eq_onde_gabarit_1_modifie(c,Nx,Nt,theta,f,u0,utilde)
+function [u,erreur] = resout_eq_onde_gabarit_1_modifie(c,Nt,Nx,theta,f,u0,utilde)
 
 %% Utilisation des variables global
 global coefferr;
@@ -26,7 +26,7 @@ u(:,1) = u0(xinter)
 u(:,2) = utilde(xinter);
 
 %% Definition des matrices:
-C = c*(deltax)^2/(deltat)^2;
+C = c*(deltat)^2/(deltax)^2;
 A = toeplitz([1+2*theta*C, -theta*C, zeros(1, Nx-2)]);
 B0 = toeplitz([2 - 2*(1-2*theta)*C, (1-2*theta)*C, zeros(1, Nx-2)]);
 B1 = toeplitz([-1 - 2*theta*C, theta*C, zeros(1, Nx-2)]);
@@ -68,6 +68,7 @@ if coefferr==0
     erreur=[];
 elseif coefferr==1
     %Creation de la fonction anonyme solution exacte
+    global wx
     uexacte=@(x,t) (alpha.*cos((n.*pi.*sqrt(c).*t)./L) + beta.*sin((n.*pi.*sqrt(c).*t)./L)).*sin((n.*pi.*x)./L);
     
     %Dicretisation des intervalles 
