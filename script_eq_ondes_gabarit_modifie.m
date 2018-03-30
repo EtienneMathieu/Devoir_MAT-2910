@@ -6,7 +6,7 @@ L = 1;
 T = 1;
 alpha = 1;
 beta = 0;
-coefferr = 1;
+coefferr = 0;
 n = 2; %indice du mode
 wx = (n*pi)/L; %depend de la partie 1
 
