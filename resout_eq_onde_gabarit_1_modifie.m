@@ -1,4 +1,4 @@
-function [u,erreur] = resout_eq_onde_gabarit_1_modifie(c,Nt,Nx,theta,f,u0,utilde)
+function [u, erreur] = resout_eq_onde_gabarit_1_modifie(c,Nt,Nx,theta,f,u0,utilde)
 
 %% Utilisation des variables global
 global coefferr;
@@ -22,7 +22,7 @@ xinter = 0:deltax:L;
 
 u = zeros(Nx,Nt);
 
-u(:,1) = u0(xinter)
+u(:,1) = u0(xinter);
 u(:,2) = utilde(xinter);
 
 %% Definition des matrices:
@@ -49,10 +49,10 @@ for i = 3:Nt
     
     % application CL (modification du vecteur b)
     b(1) = f(n+1);
-    b(Nx) = g(n+1); %Ge : mais on a pas g ?
+    b(Nx) = 0; %Ge : ça devrait être g(tn+1), mais ça dit à la p.7 que g(t) = 0
     
     % Resolution systeme (AU=b)
-    U = b/A; 
+    u(:,i) = A^-1*b; 
     
     %Decalage de U0 et de U1 (U0 devient U1 et U1 devient le nouveau U)  
     %U_0 = ; Ge :hein ?
@@ -60,16 +60,16 @@ for i = 3:Nt
     
     %Declaration de la colonne de u 
     
-    u(:,i) = U;
+    %u(:,i) = U;
 end
 
 %% Calcul de l'erreur si voulu
 if coefferr==0
     erreur=[];
 elseif coefferr==1
+    global wx;
     %Creation de la fonction anonyme solution exacte
-    global wx
-    uexacte=@(x,t) (alpha.*cos((n.*pi.*sqrt(c).*t)./L) + beta.*sin((n.*pi.*sqrt(c).*t)./L)).*sin((n.*pi.*x)./L);
+    uexacte = @(x,t) (alpha.*cos(wx.*sqrt(c).*t) + beta.*sin(wx.*sqrt(c).*t)).*sin(wx.*x);
     
     %Dicretisation des intervalles 
     xinter =  (0:deltax:L).' ;% doit etre un vecteur colonne
@@ -80,6 +80,7 @@ elseif coefferr==1
     
     %Calcul de la norme 2 des colonnes de matsolexacte-u;
     %Ge : c'est quoi une norme 2
+    erreur = u - matsolexacte;
     
 end
 
