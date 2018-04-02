@@ -14,7 +14,7 @@ t = 0:deltat:T;
 matsolexacte = uexacte(x,t);
 
 %% Video
-video_sol = VideoWriter('solutiondevoircomparaison.mp4','MPEG-4');
+video_sol = VideoWriter('video.mp4','MPEG-4');
 open(video_sol);
 h = plot(x, u(:,1), '-or', x, matsolexacte(:,1), '-ob')  % graphique initial
 legend('Position de la corde approximative', 'Position exacte de la corde'); % légende fixe pour tous les graphiques

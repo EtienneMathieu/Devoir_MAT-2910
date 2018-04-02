@@ -9,7 +9,7 @@ deltax = L/(Nx-1);
 deltat = T/(Nt-1);
 
 %% Video
-video_sol = VideoWriter('question2-3-d-1.mp4','MPEG-4');
+video_sol = VideoWriter('video.mp4','MPEG-4');
 open(video_sol);
 
 x = 0:deltax:L;

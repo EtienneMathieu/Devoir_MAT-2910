@@ -6,7 +6,7 @@ L = 1;
 T = 1;
 alpha = 1;
 beta = 0;
-coefferr = 0;
+coefferr = 1;
 n = 2; %indice du mode
 wx = (n*pi)/L; %depend de la partie 1
 
@@ -14,11 +14,11 @@ wx = (n*pi)/L; %depend de la partie 1
 
 c =   1;
 Nx =   100;
-Nt =   95;
-theta =  0;
+Nt =   100;
+theta =  0.1;
 f = @(t) 0;
-u0 = @(x)sin(wx.*x);
-utilde = @(x)sin(wx.*x);
+u0 = @(x) sin(wx.*x);
+utilde = @(x) sin(wx.*x);
 
 
 %% Faire appel a la fonction
