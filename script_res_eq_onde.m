@@ -1,6 +1,6 @@
 %% Declaration des parametre globaux
 
-global L T wx alpha beta coefferr
+global L T wx coefferr alpha beta
 
 L = 1;
 T = 1;
@@ -22,4 +22,4 @@ utilde = @(x)sin(wx.*x);
 
 
 %% Faire appel a la fonction
-[u, erreur] = resout_eq_onde_gabarit_1_modifie(c,Nt,Nx,theta,f,u0,utilde);
+[u, erreur] = resout_eq_onde(c,Nt,Nx,theta,f,u0,utilde);

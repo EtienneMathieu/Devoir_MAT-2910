@@ -1,15 +1,9 @@
-function [u, erreur] = resout_eq_onde_gabarit_1_modifie(c,Nt,Nx,theta,f,u0,utilde)
+function [u, erreur] = resout_eq_onde(c,Nt,Nx,theta,f,u0,utilde)
+% Résout l'équation des ondes
 
-%% Utilisation des variables global
-global coefferr;
-global L;
-global T;
+%% Utilisation des variables globales
+global coefferr T L alpha beta
 erreur = [];
-global alpha;
-global beta;
-global wt;
-
-
 
 %% Dicretisation de l intervalle
 

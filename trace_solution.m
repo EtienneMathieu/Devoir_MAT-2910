@@ -1,6 +1,5 @@
 function [] = trace_solution(u,Nt,Nx)
-%UNTITLED Summary of this function goes here
-%   Detailed explanation goes here
+% trace la solution sur un graphique
 
 %% Variable globale
 global L;
@@ -11,7 +10,7 @@ deltax = L/(Nx-1);
 deltat = T/(Nt-1);
 
 %% Video
-video_sol = VideoWriter('../solutiondevoir.mp4','MPEG-4'); %recule d'un dossier
+video_sol = VideoWriter('solutiondevoir.mp4','MPEG-4');
 open(video_sol);
 
 x = 0:deltax:L;
