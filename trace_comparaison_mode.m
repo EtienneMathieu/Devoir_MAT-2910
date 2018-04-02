@@ -2,8 +2,7 @@ function [] = trace_comparaison_mode(u,Nt,Nx,uexacte)
 % trace la solution obtenu numériquement et la solution exacte
 
 %% Variable globale
-global L;
-global T;
+global L T
 
 %% Parametre a calculer
 deltax = L/(Nx-1);

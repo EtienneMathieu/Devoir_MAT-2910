@@ -14,7 +14,7 @@ wx = (n*pi)/L; %depend de la partie 1
 
 c =   1;
 Nx =   100;
-Nt =   100;
+Nt =   95;
 theta =  0;
 f = @(t) 0;
 u0 = @(x)sin(wx.*x);

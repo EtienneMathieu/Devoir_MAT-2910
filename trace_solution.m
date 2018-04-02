@@ -2,15 +2,14 @@ function [] = trace_solution(u,Nt,Nx)
 % trace la solution sur un graphique
 
 %% Variable globale
-global L;
-global T;
+global L T
 
 %% Parametre a calculer
 deltax = L/(Nx-1);
 deltat = T/(Nt-1);
 
 %% Video
-video_sol = VideoWriter('solutiondevoir.mp4','MPEG-4');
+video_sol = VideoWriter('question2-3-d-1.mp4','MPEG-4');
 open(video_sol);
 
 x = 0:deltax:L;
