@@ -1,14 +1,10 @@
 %% Declaration des parametre globaux
 
-global L T wx coefferr alpha beta
+global L T coefferr
 
 L = 1;
 T = 5;
-alpha = 1;
-beta = 0;
-coefferr = 1;
-n = 2; %indice du mode
-wx = (n*pi)/L; %depend de la partie 1
+coefferr = 0;
 
 %% Declaration des autres variables
 
