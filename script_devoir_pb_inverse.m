@@ -1,0 +1,10 @@
+omega=5
+theta=0.5
+L=1
+T=1
+Nt=500
+Nx=100
+g(t)=0
+f=@(t)cos(omegat)
+u0=@(x)0.1.*(1-x)
+u1tilde=@(x)0.1.*cos(omega.*deltat).*(1-x)
