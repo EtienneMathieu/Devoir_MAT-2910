@@ -74,7 +74,10 @@ elseif coefferr==1
     
     %Calcul de la norme 2 des colonnes de matsolexacte-u;
     %Ge : c'est quoi une norme 2
-    erreur = u - matsolexacte;
+    erreur = zeros(1,Nt);
+    for i = 1:Nt
+    erreur(i) = norm(u(:,i) - matsolexacte(:,i));
+    end
     
 end
 

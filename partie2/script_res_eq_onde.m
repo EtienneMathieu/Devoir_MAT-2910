@@ -7,7 +7,7 @@ T = 1;
 alpha = 1;
 beta = 0;
 coefferr = 1;
-n = 2; %indice du mode
+n = 3; %indice du mode
 wx = (n*pi)/L; %depend de la partie 1
 
 %% Declaration des autres variables
