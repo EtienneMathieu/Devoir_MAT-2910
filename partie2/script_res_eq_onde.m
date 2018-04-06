@@ -14,8 +14,8 @@ wx = (n*pi)/L; %depend de la partie 1
 
 c =   1;
 Nx =   100;
-Nt =   95;
-theta =  0.1;
+Nt =   30;
+theta =  0.5;
 f = @(t) 0;
 u0 = @(x) sin(wx.*x);
 utilde = @(x) sin(wx.*x);

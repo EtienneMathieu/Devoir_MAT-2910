@@ -4,7 +4,7 @@ trace_solution(u, Nt, Nx)
 %trace_comparaison_mode(u, Nt, Nx, uexacte)
 
 figure(2)
-t = 0:deltat:T;
+t = linspace(0,T,Nt);
 plot(t, erreur)
 xlabel('Temps')
 ylabel('Erreur')
