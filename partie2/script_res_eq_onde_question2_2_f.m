@@ -1,4 +1,4 @@
-%% Declaration des parametre globaux
+ %% Declaration des parametre globaux
 
 global L T coefferr
 
