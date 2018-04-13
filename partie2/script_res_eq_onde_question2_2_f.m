@@ -13,9 +13,9 @@ Nx =   100;
 Nt =   500;
 theta =  1/2;
 deltat = T/(Nt-1);
-f = @(t) 0.1.*cos(3.*pi.*sqrt(10).*t);
+f = @(t) 0.1.*cos(2.*pi.*sqrt(10).*t);
 u0 = @(x) 0.1.*(1-x);
-utilde = @(x) 0.1.*cos(3.*pi.*sqrt(10).*deltat).*(1-x);
+utilde = @(x) 0.1.*cos(2.*pi.*sqrt(10).*deltat).*(1-x);
 
 
 %% Faire appel a la fonction
