@@ -12,7 +12,6 @@ xlabel('Valeur de c')
 ylabel('Valeur de J')
 xlim([c_intervalle(1) c_intervalle(end)])
 ylim([0 0.005])
-title('Valeur integrale pour chaque valeur de c')
 saveas(gcf,'fonction_objectif','jpeg')
 end
 

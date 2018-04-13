@@ -43,18 +43,10 @@ for i = 3:Nt
     
     % application CL (modification du vecteur b)
     b(1) = f(n+1);
-    b(Nx) = 0; %Ge : ça devrait être g(tn+1), mais ça dit à la p.7 que g(t) = 0
+    b(Nx) = 0;
     
     % Resolution systeme (AU=b)
     u(:,i) = A\b; 
-    
-    %Decalage de U0 et de U1 (U0 devient U1 et U1 devient le nouveau U)  
-    %U_0 = ; Ge :hein ?
-    %U_1 = ; Ge :hein ?
-    
-    %Declaration de la colonne de u 
-    
-    %u(:,i) = U;
 end
 
 %% Calcul de l'erreur si voulu
@@ -73,7 +65,6 @@ elseif coefferr==1
     matsolexacte = uexacte(xinter, tinter);
     
     %Calcul de la norme 2 des colonnes de matsolexacte-u;
-    %Ge : c'est quoi une norme 2
     erreur = zeros(1,Nt);
     for i = 1:Nt
     erreur(i) = norm(u(:,i) - matsolexacte(:,i));

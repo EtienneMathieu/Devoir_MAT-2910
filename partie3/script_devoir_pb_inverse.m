@@ -59,6 +59,8 @@ plot(iteration1, tab_err1); hold on
 plot(iteration2, tab_err2); hold on
 plot(iteration3, tab_err3)
 ylim([0 10])
+xlabel('Itération')
+ylabel('Erreur absolue')
 legend('c0 = 3, c1 = 3.1', 'c0 = 15, c1 = 15.1', 'c0 = 17, c1 = 17.1')
 saveas(gcf,'methode_secante','jpeg')
 
