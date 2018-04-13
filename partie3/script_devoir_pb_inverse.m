@@ -18,6 +18,8 @@ f=@(t)cos(w.*t);
 u0=@(x)0.1.*(1-x);
 u1tilde=@(x)0.1.*cos(w.*deltat).*(1-x);
 
+%% Générer des données 
+
 %% Exercice 1 a)
 % Méthode des trapèzes
 
