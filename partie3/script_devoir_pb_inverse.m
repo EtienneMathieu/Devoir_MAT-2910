@@ -63,3 +63,11 @@ saveas(gcf,'methode_secante','jpeg')
 
 %% Exercice 4
 
+vois=20;
+cini_recuit= [3 15 17 21 23];
+nbrecuit= 1; 
+mxrecuit= zeros(nbrecuit,length(cini_recuit));
+%Premier cini
+for i=1 : nbrecuit
+    mxrecuit(i,1) = pb_inv_recuit_simule(u_ex,cini_recuit(1),vois,nmax,f,u0,u1tilde);
+end
