@@ -33,21 +33,22 @@ trace_fonction_objectif(u_ex,c_intervalle,f,u0,u1tilde)
 %% Exercice 2
 nmax = 100;
 precision = 0.01;
+cfinal_secante = zeros(1,3);
 
 %Premier appel
 c0 = 3;
 c1 = 3.1;
-[cfinal1,ufinal1,tab_err1] = pb_inv_secante(u_ex,nmax,precision,c0,c1,f,u0,u1tilde);
+[cfinal_secante(1),ufinal1,tab_err1] = pb_inv_secante(u_ex,nmax,precision,c0,c1,f,u0,u1tilde);
 
 %Deuxième appel
 c0 = 15;
 c1 = 15.1;
-[cfinal2,ufinal2,tab_err2] = pb_inv_secante(u_ex,nmax,precision,c0,c1,f,u0,u1tilde);
+[cfinal_secante(2),ufinal2,tab_err2] = pb_inv_secante(u_ex,nmax,precision,c0,c1,f,u0,u1tilde);
 
 %Troisième appel
 c0 = 17;
 c1 = 17.1;
-[cfinal3,ufinal3,tab_err3] = pb_inv_secante(u_ex,nmax,precision,c0,c1,f,u0,u1tilde);
+[cfinal_secante(3),ufinal3,tab_err3] = pb_inv_secante(u_ex,nmax,precision,c0,c1,f,u0,u1tilde);
 
 %création du graphique
 figure(2)
@@ -65,9 +66,13 @@ saveas(gcf,'methode_secante','jpeg')
 
 vois=20;
 cini_recuit= [3 15 17 21 23];
-nbrecuit= 1; 
+nbrecuit= 3; 
 mxrecuit= zeros(nbrecuit,length(cini_recuit));
+cfinal_recuit = zeros(1, length(cini_recuit));
 %Premier cini
-for i=1 : nbrecuit
-    mxrecuit(i,1) = pb_inv_recuit_simule(u_ex,cini_recuit(1),vois,nmax,f,u0,u1tilde);
+for j=1:length(cini_recuit)
+    for i=1 : nbrecuit
+        mxrecuit(i,j) = pb_inv_recuit_simule(u_ex,cini_recuit(j),vois,nmax,f,u0,u1tilde);
+    end
+    cfinal_recuit(j) = mean(mxrecuit(:,j));
 end

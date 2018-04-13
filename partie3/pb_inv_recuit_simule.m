@@ -33,7 +33,7 @@ R=100;
 a=0.8;
 
 while (R > 0.0001 && k <= nmax)
-    x1 = x0+vois*(rand(0,1)-0.7);
+    x1 = x0+vois*(rand-0.7);
     %calcul de y1 = f(x1);
     u_c1 = resout_eq_onde(x1,Nt,Nx,theta,f,u0,u1tilde);
     J1 = calcul_valeur_integrale(u_c1, u_ex);
@@ -41,9 +41,9 @@ while (R > 0.0001 && k <= nmax)
     if y1 < y0
         xo=x1; y0 = y1;
     else
-        p = rand(0,1);
+        p = rand;
         if p < exp(-(y1-y0)/R)
-            R=aR;
+            R=a*R;
             x0=x1; y0=y1;
         end
     end
@@ -51,5 +51,8 @@ while (R > 0.0001 && k <= nmax)
         y_global = y1; x_global = x1;
     end
     k=k+1;
+end
+cfinal = x_global;
+iter = k-1;
 end
  
