@@ -18,7 +18,10 @@ f=@(t)cos(w.*t);
 u0=@(x)0.1.*(1-x);
 u1tilde=@(x)0.1.*cos(w.*deltat).*(1-x);
 
-%% Générer des données 
+%% Générer des données expérimentales
+
+c_ex = 10
+u_ex = resout_eq_onde(c_ex,Nt,Nx,theta,f,u0,utilde);
 
 %% Exercice 1 a)
 % Méthode des trapèzes
