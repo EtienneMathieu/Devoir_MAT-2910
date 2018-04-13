@@ -33,7 +33,7 @@ trace_fonction_objectif(u_ex,c_intervalle,f,u0,u1tilde)
 %% Exercice 2
 nmax = 100;
 precision = 0.01;
-cfinal_secante = zeros(1,3);
+cfinal_secante = zeros(1,3); %vecteur qui va contenir les valeurs finales de c pour les différentes valeurs de départ de c
 
 %Premier appel
 c0 = 3;
@@ -67,9 +67,9 @@ saveas(gcf,'methode_secante','jpeg')
 vois=20;
 cini_recuit= [3 15 17 21 23];
 nbrecuit= 3; 
-mxrecuit= zeros(nbrecuit,length(cini_recuit));
-cfinal_recuit = zeros(1, length(cini_recuit));
-%Premier cini
+mxrecuit= zeros(nbrecuit,length(cini_recuit)); %chaque colonne est pour une valeur de cini, chaque ligne est une itération de l'algorithme de recuit
+cfinal_recuit = zeros(1, length(cini_recuit)); %vecteur qui va contenir la valeur final obtenue pour les recuits sur une valeur de cini
+
 for j=1:length(cini_recuit)
     for i=1 : nbrecuit
         mxrecuit(i,j) = pb_inv_recuit_simule(u_ex,cini_recuit(j),vois,nmax,f,u0,u1tilde);
