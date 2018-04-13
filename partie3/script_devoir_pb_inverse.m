@@ -6,7 +6,7 @@
 
 %% Variables globales à initialiser
 
-global w theta L T Nt Nx g f u0 u1tilde
+global w theta L T Nt Nx g coefferr
 w=5;
 theta=0.5;
 L=1;
@@ -14,29 +14,52 @@ T=1;
 Nt=500;
 Nx=100;
 g=@(t)0;
+coefferr = 0;
+
+deltat = T/(Nt-1);
 f=@(t)cos(w.*t);
 u0=@(x)0.1.*(1-x);
 u1tilde=@(x)0.1.*cos(w.*deltat).*(1-x);
 
 %% Générer des données expérimentales
 
-c_ex = 10
-u_ex = resout_eq_onde(c_ex,Nt,Nx,theta,f,u0,utilde);
+c_ex = 10;
+u_ex = resout_eq_onde(c_ex,Nt,Nx,theta,f,u0,u1tilde);
 
-%% Exercice 1 a)
-% Méthode des trapèzes
+%% Exercice 1 
+c_intervalle = 7:0.5:30;
+trace_fonction_objectif(u_ex,c_intervalle,f,u0,u1tilde)
 
-[u, erreur] = resout_eq_onde(c,Nt,Nx,theta,f,u0,utilde)
+%% Exercice 2
+nmax = 100;
+precision = 0.01;
 
-u_c= u(4,:); %4ème ligne de la matrice résultante de la fonction resout_eq_onde
+%Premier appel
+c0 = 3;
+c1 = 3.1;
+[cfinal1,ufinal1,tab_err1] = pb_inv_secante(u_ex,nmax,precision,c0,c1,f,u0,u1tilde);
 
-%Il faut comprendre comment fixer c_exp=10
-u_ex= resout_eq_onde(c,Nt,Nx,theta,f,u0,utilde);
+%Deuxième appel
+c0 = 15;
+c1 = 15.1;
+[cfinal2,ufinal2,tab_err2] = pb_inv_secante(u_ex,nmax,precision,c0,c1,f,u0,u1tilde);
 
-if (c > 0) & (c < 100)
-    [ J ] = calcul_valeur_integrale( u_c,u_ex )
-elseif (c > 100)
-    disp('c est plus grand que 100')
-else
-    disp("La valeur de c n'est pas plus grande que 0")
-end
+%Troisième appel
+c0 = 17;
+c1 = 17.1;
+[cfinal3,ufinal3,tab_err3] = pb_inv_secante(u_ex,nmax,precision,c0,c1,f,u0,u1tilde);
+
+%création du graphique
+figure(2)
+iteration1 = 0:length(tab_err1)-1;
+iteration2 = 0:length(tab_err2)-1;
+iteration3 = 0:length(tab_err3)-1;
+plot(iteration1, tab_err1); hold on
+plot(iteration2, tab_err2); hold on
+plot(iteration3, tab_err3)
+ylim([0 10])
+legend('c0 = 3, c1 = 3.1', 'c0 = 15, c1 = 15.1', 'c0 = 17, c1 = 17.1')
+saveas(gcf,'methode_secante','jpeg')
+
+%% Exercice 4
+
